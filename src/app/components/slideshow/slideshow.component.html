@@ -1,0 +1,21 @@
+
+<!-- Slider main container -->
+<div class="swiper mt-4">
+    <div class="swiper-wrapper">
+      <div *ngFor="let item of movies"
+             class="swiper-slide"
+             [ngStyle]="{
+                 'background-size': 'cover',
+                 'text-align:': 'center',
+                 'background-image': 'url(https://image.tmdb.org/t/p/w500/'+ item.backdrop_path +')'
+             }">
+            <div class="movie-description">
+                <h3>{{ item.title}}</h3>
+                <p> {{item.overview | slice: 0:130}}...</p>
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+  </div>
