@@ -23,10 +23,6 @@ export class MoviesService {
   }
 
   getBillBoard(): Observable<Movie[]> {
-    // if( this.loading ) {
-    //   //loading movies
-    //   return of([])
-    // }
     this.loading = true;
     return this.http.get<BillboardResponse>(`${this.urlBase}/movie/now_playing`, {
       params: this.params()
@@ -34,11 +30,17 @@ export class MoviesService {
     .pipe(
       map(( resp ) => resp.results),
       tap( () => {
-        this.billboardPage += 1
+        this.billboardPage++;
         this.loading = false;
       })
     )
   }
+  searchMovies( movie: string) {
+    const baseUrl: string = 'https://api.themoviedb.org/3/movie';
+    return this.http.get(`${baseUrl}`)
+  }
+
+// https://api.themoviedb.org/3/search/company?api_key=e5c3eb90dc72dd6bf52aee1e875f2c7c&page=1
 
 
 }
