@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { map, Observable, of, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
 import { BillboardResponse, Movie } from '../interfaces/billboard-response.interface';
 
 @Injectable({
@@ -35,12 +35,18 @@ export class MoviesService {
       })
     )
   }
-  searchMovies( movie: string) {
-    const baseUrl: string = 'https://api.themoviedb.org/3/movie';
-    return this.http.get(`${baseUrl}`)
+  searchMovies( query: string): Observable<Movie[]> {
+    const params = { ...this.params(), page: 1, query: query}
+    const baseUrl: string = 'https://api.themoviedb.org/3/search/movie';
+    return this.http.get<BillboardResponse>(`${baseUrl}`, {
+      params
+    })
+    .pipe(
+      map( resp => resp.results)
+    )
   }
 
-// https://api.themoviedb.org/3/search/company?api_key=e5c3eb90dc72dd6bf52aee1e875f2c7c&page=1
+  // https://api.themoviedb.org/3/search/movie?api_key=e5c3eb90dc72dd6bf52aee1e875f2c7c&language=en-US&query=batman&page=1&include_adult=false
 
 
 }

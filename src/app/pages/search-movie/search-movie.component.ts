@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MoviesService } from '../../services/movies.service';
+import { Movie } from '../../interfaces/billboard-response.interface';
 
 @Component({
   selector: 'app-search-movie',
@@ -8,12 +10,27 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SearchMovieComponent implements OnInit {
 
-  constructor( private activatedRoute: ActivatedRoute ) { }
+  public title: string = ''
+  public movies: Movie[] = []
+  public loading: boolean = false
+
+  constructor( 
+    private activatedRoute: ActivatedRoute,
+    private movieService: MoviesService
+    ) { 
+      this.loading = true
+    }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(  params => {
       console.log(params['id']);
       // TODO calling services
+      this.movieService.searchMovies(params['id']).subscribe( film => {
+        this.title = film[0].title
+        this.movies = film
+        this.loading = false
+      })
+      // })
     })
   }
 

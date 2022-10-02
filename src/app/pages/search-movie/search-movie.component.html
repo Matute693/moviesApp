@@ -1,6 +1,10 @@
-<p>search-movie works!</p>
-<div class="row">
+<h2 class="text-capitalize"> {{ title }}</h2>
+
+<div *ngIf="loading" class="row">
     <div class="col">
-        <h2>Hola patuco</h2>
+
+
+        <app-movies-poster-grid [movies]="movies"></app-movies-poster-grid>
+
     </div>
 </div>
