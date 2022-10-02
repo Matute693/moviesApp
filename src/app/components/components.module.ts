@@ -7,14 +7,13 @@ import { PipesModule } from '../pipes/pipes.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-grid.component';
+import { LoadingComponent } from './loading/loading.component';
 
-
+const components = [NavbarComponent, SlideshowComponent, MoviesPosterGridComponent, LoadingComponent]
 
 @NgModule({
   declarations: [
-    NavbarComponent,
-    SlideshowComponent,
-    MoviesPosterGridComponent
+    components
   ],
   imports: [
     CommonModule,
@@ -22,6 +21,6 @@ import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-gr
     RatingModule,
     PipesModule
   ],
-  exports: [NavbarComponent, SlideshowComponent, MoviesPosterGridComponent]
+  exports: [components]
 })
 export class ComponentsModule { }

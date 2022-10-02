@@ -10,25 +10,25 @@ import { Movie } from '../../interfaces/billboard-response.interface';
 })
 export class SearchMovieComponent implements OnInit {
 
-  public title: string = ''
-  public movies: Movie[] = []
-  public loading: boolean = false
+  public title: string = '';
+  public movies: Movie[] = [];
+  public loading: boolean = false;
 
   constructor( 
     private activatedRoute: ActivatedRoute,
     private movieService: MoviesService
     ) { 
-      this.loading = true
     }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(  params => {
       console.log(params['id']);
+      this.loading = false;
       // TODO calling services
       this.movieService.searchMovies(params['id']).subscribe( film => {
-        this.title = film[0].title
-        this.movies = film
-        this.loading = false
+        this.title = film[0].title;
+        this.movies = film;
+        this.loading = true;
       })
       // })
     })
