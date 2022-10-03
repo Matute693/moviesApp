@@ -22,7 +22,7 @@ export class SearchMovieComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(  params => {
-      console.log(params['id']);
+      // console.log(params['id']);
       this.loading = false;
       // TODO calling services
       this.movieService.searchMovies(params['id']).subscribe( film => {
