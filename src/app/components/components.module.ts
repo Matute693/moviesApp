@@ -8,12 +8,14 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SlideshowComponent } from './slideshow/slideshow.component';
 import { MoviesPosterGridComponent } from './movies-poster-grid/movies-poster-grid.component';
 import { LoadingComponent } from './loading/loading.component';
+import { SlideCastShowComponent } from './slide-cast-show/slide-cast-show.component';
 
-const components = [NavbarComponent, SlideshowComponent, MoviesPosterGridComponent, LoadingComponent]
+const components = [NavbarComponent, SlideshowComponent, MoviesPosterGridComponent, LoadingComponent, SlideCastShowComponent]
 
 @NgModule({
   declarations: [
-    components
+    components,
+    SlideCastShowComponent
   ],
   imports: [
     CommonModule,

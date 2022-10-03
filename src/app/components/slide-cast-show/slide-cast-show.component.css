@@ -1,0 +1,31 @@
+.swiper-container {
+    height: 350px;
+    width: 100%;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    color: white;
+}
+
+.movie-description {
+    background-color: rgba(0, 0, 0, 0.3);
+    bottom: 0;
+    padding: 5px 50px;
+    position: absolute;
+    width: 100%;
+}
+
+.swiper-slide {
+    display: grid;
+    grid-template-columns: repeat(1fr) ;
+
+}
+
+.swiper-slide-active {
+    width: 100%;
+}
+
+.swiper {
+    width: 600px;
+    height: 300px;
+  }

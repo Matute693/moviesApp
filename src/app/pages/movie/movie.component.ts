@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MoviesService } from '../../services/movies.service';
 import { MovieDetails } from '../../interfaces/movie-response.interface';
+import { Location } from '@angular/common';
+import { Cast } from '../../interfaces/movie-cast.interface';
 
 @Component({
   selector: 'app-movie',
@@ -10,18 +12,33 @@ import { MovieDetails } from '../../interfaces/movie-response.interface';
 })
 export class MovieComponent implements OnInit {
 
-  public movie?: MovieDetails
+  public movie?: MovieDetails | null;
+  public cast: Cast[] = [];
 
   constructor( 
       private activateRoute: ActivatedRoute,
-      private movieService: MoviesService) { }
+      private movieService: MoviesService,
+      private location: Location,
+      private router: Router) { }
 
   ngOnInit(): void {
     const id: string = this.activateRoute.snapshot.params['id'];
     this.movieService.getMovieDetails(id).subscribe( movie => {
-      console.log(movie)
+      if( !movie ) {
+        this.router.navigateByUrl('/home');
+        return;
+      }
       this.movie = movie
     })
+
+    this.movieService.getMovieCast( id ).subscribe( cast => {
+      // console.log( data )
+      this.cast = cast.filter( cast => cast.profile_path !== null)
+    })
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }
