@@ -29,3 +29,9 @@
     width: 600px;
     height: 300px;
   }
+
+  @media(max-width: 710px) {
+      .d-none-710 {
+          display: none;
+      }
+  }

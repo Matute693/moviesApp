@@ -18,7 +18,9 @@ export class NavbarComponent implements OnInit {
     if( searchMovie.length === 0 ) {
       return;
     }
-    this.router.navigate(['/search', searchMovie])
+    if(searchMovie.length >= 3){
+      this.router.navigate(['/search', searchMovie])
+    }
   }
 
 }

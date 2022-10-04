@@ -1,15 +1,12 @@
-
-<div class="swiper-container mt-4">
+<div class="swiper-container mt-5">
     <div class="swiper-wrapper">
-      <div  *ngFor="let character of cast"
-            class="swiper-slide text-white text-center">
-                {{ character.name}}
+      <div *ngFor="let character of cast"
+            class="swiper-slide col-sm-4 text-white text-center">
+            <h5>{{ character.name | slice:0:10}}</h5>
                 <img 
                     [src]="character.profile_path | poster" 
                     [alt]="character.name"
-                    class="img-fluid img-thumbnail">
+                    class=" img-thumbnail">
         </div>
     </div>
 </div>
-
-<!-- 'background-image': 'url(https://image.tmdb.org/t/p/w500/'+ character.profile_path +')' -->
