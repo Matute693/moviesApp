@@ -11,5 +11,5 @@ URL DEMO DEPLOY: https://movies-steam.netlify.app
 
 ## Install it on your computer
 
-npm i
-ng serve
+- npm i
+- ng serve
